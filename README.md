@@ -108,10 +108,6 @@ Este é um sistema de gerenciamento de tarefas (To-Do List) desenvolvido com Lar
 ## Instalação e Execução
 
 1. Clone o repositório:
-```bash
-git clone [URL_DO_REPOSITÓRIO]
-cd [NOME_DO_DIRETÓRIO]
-```
 
 2. Configure o ambiente:
 ```bash
