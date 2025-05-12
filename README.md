@@ -119,30 +119,11 @@ cp .env.example .env
 docker-compose up -d
 ```
 
-4. Instale as dependências do projeto:
+4. Rode o script para iniciar os containers docker
 ```bash
-docker-compose exec app composer install
+./docker-init.sh
 ```
 
-5. Gere a chave da aplicação:
-```bash
-docker-compose exec app php artisan key:generate
-```
-
-6. Execute as migrações e seeders:
-```bash
-docker-compose exec app php artisan migrate --seed
-```
-
-A aplicação estará disponível em: http://localhost:8000
-
-## Executando os Testes
-
-Para executar os testes:
-
-```bash
-docker-compose exec app php artisan test
-```
 
 ## Estrutura do Projeto
 
@@ -168,15 +149,3 @@ docker-compose exec app php artisan test
 - MySQL 8.0
 - Docker
 - PHPUnit para testes
-
-## Observações
-
-- O banco de dados MySQL está configurado com as seguintes credenciais padrão:
-  - Database: laravel
-  - Username: laravel
-  - Password: root
-  - Root Password: root
-
-- As credenciais podem ser alteradas no arquivo `.env` e no `docker-compose.yml`
-
-- Os dados do banco são persistidos em um volume Docker para manter os dados entre reinicializações dos containers 
