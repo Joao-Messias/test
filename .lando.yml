@@ -1,0 +1,45 @@
+name: todo
+recipe: laravel
+config:
+  webroot: ./public
+  php: '8.2'
+  composer_version: 2-latest
+  via: nginx
+  cache: redis
+  database: mysql:8.0
+  xdebug: 'develop,debug'
+services:
+  appserver_nginx:
+    scanner: false
+  database:
+    portforward: 24305
+    creds:
+      user: todo
+      password: 123456789
+      database: todo
+  node:
+    type: node:18
+    scanner: false
+    ports:
+      - 8084:8084
+    build:
+      - npm install
+tooling:
+  migrate:
+    service: appserver
+    cmd: php artisan migrate
+  composer:
+    service: appserver
+    cmd: composer
+  npm:
+    service: node
+    cmd: npm
+  dev:
+    service: node
+    cmd: npm run dev
+  build:
+    service: node
+    cmd: npm run build
+  artisan:
+    service: appserver
+    cmd: php artisan
